@@ -9,6 +9,7 @@ export const Main = ({url}: {url: string}) => {
 	parsedURL > 0 ?
 		content = Videos.filter((video: VideoObject): boolean => video.id === parsedURL)
 			.map(({id, title, creator, video, description}: VideoObject) => {
+
 				return <div key={id}>
 					<h1>{title}</h1>
 					<video src={video} width="800" controls={true} autoPlay={false}/>
@@ -17,6 +18,7 @@ export const Main = ({url}: {url: string}) => {
 				</div>
 			}) :
 		content = Videos.map(({id, title, creator, video, description}: VideoObject) => {
+
 			return <div key={id}>
 				<h1>{title}</h1>
 				<video src={video} width="400" controls={true} autoPlay={false}/>
