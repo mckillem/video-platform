@@ -9,12 +9,12 @@ function SearchBar({ placeholder, videos }: {placeholder: string, videos: VideoO
 	const handleFilter = (event: ChangeEvent<HTMLInputElement>) => {
 		const searchWord: string = event.target.value;
 		setWordEntered(searchWord);
-		const filmsFilter: VideoObject[] = videos.filter((value: VideoObject) => value.title.toLowerCase().includes(searchWord.toLowerCase()));
+		const videosFilter: VideoObject[] = videos.filter((value: VideoObject) => value.title.toLowerCase().includes(searchWord.toLowerCase()));
 
 		if (searchWord === "") {
 			setFilteredVideos([]);
 		} else {
-			setFilteredVideos(filmsFilter);
+			setFilteredVideos(videosFilter);
 		}
 	};
 
