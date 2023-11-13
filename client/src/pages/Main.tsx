@@ -1,10 +1,16 @@
 import "./Main.scss";
 import {Videos} from "../mockData/Videos";
 import {VideoObject} from "../implementations/VideoObject";
+import {useState} from "react";
 
 export const Main = ({url}: {url: string}) => {
-	const parsedURL: number = parseInt(url.slice(1));
+	const [parsedURL, setParsedURL] = useState(parseInt(url.slice(1)));
 	let content;
+
+	const handleOnClick = (id: number) => {
+		window.location.pathname = "/" + id;
+		setParsedURL(id);
+	}
 
 	parsedURL > 0 ?
 		content = Videos.filter((video: VideoObject): boolean => video.id === parsedURL)
@@ -21,7 +27,7 @@ export const Main = ({url}: {url: string}) => {
 
 			return <div key={id}>
 				<h1>{title}</h1>
-				<video src={video} width="400" controls={true} autoPlay={false}/>
+				<video src={video} width="400" controls={false} autoPlay={false} onClick={() => handleOnClick(id)}/>
 				<h2>{creator}</h2>
 				<p>{description}</p>
 			</div>
