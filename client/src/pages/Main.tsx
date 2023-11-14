@@ -14,7 +14,7 @@ export const Main = ({url}: {url: string}) => {
 		window.location.pathname = "/" + id;
 		setParsedURL(id);
 	}
-	console.log(parsedURL)
+
 	if (parsedURL > 0) {
 		content = Videos.filter((video: VideoObject): boolean => video.id === parsedURL)
 			.map(({id, title, creator, video, description}: VideoObject) => {
@@ -31,7 +31,8 @@ export const Main = ({url}: {url: string}) => {
 				</div>
 			})
 	} else if (url.slice(1) === "jedna") {
-		content = Creators.filter((creator: CreatorObject): boolean => creator.username === "jedna").map(({id, username, email, videosList, playlists, description}: CreatorObject) => {
+		content = Creators.filter((creator: CreatorObject): boolean => creator.username === "jedna")
+			.map(({id, username, email, videosList, playlists, description}: CreatorObject) => {
 
 			return <div key={id} id={"video"}>
 				<h1>{username}</h1>
@@ -44,9 +45,7 @@ export const Main = ({url}: {url: string}) => {
 								return video.id;
 							}
 						}
-					}
-
-					).map(({title}: VideoObject) => <li>{title}</li>)}
+					}).map(({title}: VideoObject) => <li>{title}</li>)}
 				</ul>
 				<h4>Playlisty: </h4>
 				<ul>
