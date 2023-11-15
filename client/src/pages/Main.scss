@@ -1,4 +1,6 @@
 #main {
+  margin-left: 250px;
+  border: #ba0305 solid 2px;
   #video {
 	width: 400px;
 	margin-left: 10px;
@@ -7,5 +9,10 @@
   h4 {
 	display: inline;
 	margin-right: 100px;
+  }
+
+  .options {
+	display: inline;
+	margin-right: 10px;
   }
 }

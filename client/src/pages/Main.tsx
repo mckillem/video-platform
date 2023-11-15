@@ -5,6 +5,7 @@ import {VideoObject} from "../implementations/VideoObject";
 import {useState} from "react";
 import {CreatorObject} from "../implementations/CreatorObject";
 import {Creators} from "../mockData/Creators";
+import {Sidebar} from "./Sidebar";
 
 export const Main = ({url}: {url: string}) => {
 	const [slicedURL, setSlicedURL] = useState(url.slice(1));
@@ -24,7 +25,7 @@ export const Main = ({url}: {url: string}) => {
 
 	if (slicedURL.slice(0, 5) === "video") {
 		content = Videos.filter((video: VideoObject): boolean => video.id === parseInt(slicedURL.slice(5)))
-			.map(({id, title, creator, video, description}: VideoObject) => {
+			.map(({id, title, creator, video, description, publishedAt}: VideoObject) => {
 				let creatorName:string = Creators.filter((creatorObject: CreatorObject): boolean => creatorObject.id === creator)
 					.map(({username}: CreatorObject) => username)[0];
 
@@ -35,6 +36,9 @@ export const Main = ({url}: {url: string}) => {
 						window.location.pathname = "/@" + creatorName;
 						setSlicedURL("@" + creatorName);
 					}}>{creatorName}</h2>
+					<p className={"options"}>Odebíráno/odebírat</p>
+					<p className={"options"}>Líbí/nelíbí</p>
+					<p>Publikováno: {publishedAt}</p>
 					<p>{description}</p>
 				</div>
 			})
@@ -90,8 +94,11 @@ export const Main = ({url}: {url: string}) => {
 	}
 
 	return (
-		<div id={"main"}>
-			{content}
-		</div>
+		<>
+			<Sidebar></Sidebar>
+			<div id={"main"}>
+				{content}
+			</div>
+		</>
 	);
 };
