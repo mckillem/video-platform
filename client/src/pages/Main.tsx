@@ -7,31 +7,32 @@ import {CreatorObject} from "../implementations/CreatorObject";
 import {Creators} from "../mockData/Creators";
 
 export const Main = ({url}: {url: string}) => {
-	const [parsedURL, setParsedURL] = useState(parseInt(url.slice(1)));
+	const [slicedURL, setSlicedURL] = useState(url.slice(1));
 	let content;
 
 	const handleOnClick = (id: number) => {
-		window.location.pathname = "/" + id;
-		setParsedURL(id);
+		window.location.pathname = "/video" + id;
+		setSlicedURL("video" + id);
 	}
 
-	if (parsedURL > 0) {
-		content = Videos.filter((video: VideoObject): boolean => video.id === parsedURL)
+	if (slicedURL.slice(0, 5) === "video") {
+		content = Videos.filter((video: VideoObject): boolean => video.id === parseInt(slicedURL.slice(5)))
 			.map(({id, title, creator, video, description}: VideoObject) => {
+				let creatorName:string = Creators.filter((creatorObject: CreatorObject): boolean => creatorObject.id === creator)
+					.map(({username}: CreatorObject) => username)[0];
 
 				return <div key={id}>
 					<h1>{title}</h1>
 					<video src={video} width="800" controls={true} autoPlay={false}/>
-					{/*todo: zprovoznit. Vlastní metoda, univerzální a ne jen na /jedna*/}
 					<h2 onClick={() => {
-						window.location.pathname = "/jedna";
-						setParsedURL(creator);
-					}}>{creator}</h2>
+						window.location.pathname = "/@" + creatorName;
+						setSlicedURL("@" + creatorName);
+					}}>{creatorName}</h2>
 					<p>{description}</p>
 				</div>
 			})
-	} else if (url.slice(1) === "jedna") {
-		content = Creators.filter((creator: CreatorObject): boolean => creator.username === "jedna")
+	} else if (slicedURL.slice(0, 1) === "@") {
+		content = Creators.filter((creator: CreatorObject): boolean => creator.username === slicedURL.slice(1))
 			.map(({id, username, email, videosList, playlists, description}: CreatorObject) => {
 
 			return <div key={id} id={"video"}>
@@ -45,7 +46,7 @@ export const Main = ({url}: {url: string}) => {
 								return video.id;
 							}
 						}
-					}).map(({title}: VideoObject) => <li>{title}</li>)}
+					}).map(({title}: VideoObject) => <li key={title}>{title}</li>)}
 				</ul>
 				<h4>Playlisty: </h4>
 				<ul>
