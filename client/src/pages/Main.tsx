@@ -8,11 +8,18 @@ import {Creators} from "../mockData/Creators";
 
 export const Main = ({url}: {url: string}) => {
 	const [slicedURL, setSlicedURL] = useState(url.slice(1));
+	const [changeList, setChangeList] = useState(true);
 	let content;
 
 	const handleOnClick = (id: number) => {
 		window.location.pathname = "/video" + id;
 		setSlicedURL("video" + id);
+	}
+
+	const handleChangeList = (username: string, type: string) => {
+		window.location.pathname = "/@" + username + "/" + type;
+		setSlicedURL("@" + username + "/" + type);
+	  // setChangeList(!changeList);
 	}
 
 	if (slicedURL.slice(0, 5) === "video") {
@@ -32,27 +39,38 @@ export const Main = ({url}: {url: string}) => {
 				</div>
 			})
 	} else if (slicedURL.slice(0, 1) === "@") {
-		content = Creators.filter((creator: CreatorObject): boolean => creator.username === slicedURL.slice(1))
+		console.log(slicedURL.slice(-9))
+		let username: string = slicedURL.slice(1, -6) ? slicedURL.slice(1, -6) : slicedURL.slice(1, -9) ? slicedURL.slice(1, -9) : slicedURL.slice(1);
+
+		content = Creators.filter((creator: CreatorObject): boolean => creator.username === username)
 			.map(({id, username, email, videosList, playlists, description}: CreatorObject) => {
 
-			return <div key={id} id={"video"}>
+			return <div key={id}>
 				<h1>{username}</h1>
 				<p>Kontakt: {email}</p>
-				<h4>Videa: </h4>
-				<ul>
-					{Videos.filter((video: VideoObject) => {
+				<p>{description}</p>
+				<h4 onClick={() => handleChangeList(username, "videa")}>Videa</h4>
+				<h4 onClick={() => handleChangeList(username, "playlisty")}>Playlisty</h4>
+
+				{slicedURL.slice(-5) === "videa" ?
+					Videos.filter((video: VideoObject) => {
 						for (let i: number = 0; i < videosList.length; i++) {
 							if (video.id === videosList[i]) {
 								return video.id;
 							}
 						}
-					}).map(({title}: VideoObject) => <li key={title}>{title}</li>)}
-				</ul>
-				<h4>Playlisty: </h4>
-				<ul>
-					<li>{playlists}</li>
-				</ul>
-				<p>{description}</p>
+					}).map(({title, video}: VideoObject) =>  {
+						return <>
+							<h3 key={title}>{title}</h3>
+							<video src={video} width={400} controls={true} className={"col span-2-of-2"}></video>
+						</>
+					}) :
+					slicedURL.slice(-9) === "playlisty" ?
+					<ul>
+						<li>prvi{playlists}</li>
+					</ul> :
+					<ul></ul>
+				}
 			</div>
 		})
 	} else {
