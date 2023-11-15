@@ -8,7 +8,7 @@ export const Videos:VideoObject[] = [
 		video: require("./videos/TypeScript Course In ReactJS - TypeScript.mp4"),
 		description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Autem accusantium amet nemo minus quo architecto quas",
 		createdAt: "10. 11.2020",
-		publishedAt: "12.12.2021",
+		publishedAt: "12.12.2022",
 	},
 	{
 		id: 2,
@@ -26,7 +26,7 @@ export const Videos:VideoObject[] = [
 		video: require("./videos/TypeScript Course In ReactJS - TypeScript.mp4"),
 		description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Autem accusantium amet nemo minus quo architecto quas",
 		createdAt: "10. 11.2020",
-		publishedAt: "12.12.2021",
+		publishedAt: "12.12.2023",
 	},
 	{
 		id: 4,

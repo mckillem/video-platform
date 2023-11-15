@@ -59,11 +59,13 @@ export const Main = ({url}: {url: string}) => {
 								return video.id;
 							}
 						}
-					}).map(({title, video}: VideoObject) =>  {
-						return <>
-							<h3 key={title}>{title}</h3>
-							<video src={video} width={400} controls={true} className={"col span-2-of-2"}></video>
-						</>
+					})
+						.sort((a: VideoObject, b: VideoObject) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt))
+						.map(({title, video}: VideoObject) =>  {
+							return <>
+								<h3 key={title}>{title}</h3>
+								<video src={video} width={400} controls={true} className={"col span-2-of-2"}></video>
+							</>
 					}) :
 					slicedURL.slice(-9) === "playlisty" ?
 					<ul>
