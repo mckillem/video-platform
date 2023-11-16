@@ -45,24 +45,25 @@ export const Main = ({url}: {url: string}) => {
 				</div>
 			})
 	} else if (slicedURL.slice(0, 1) === "@") {
-		let username: string = slicedURL.slice(1, -6) ? slicedURL.slice(1, -6) : slicedURL.slice(1, -9) ? slicedURL.slice(1, -9) : slicedURL.slice(1);
-
+		// let username: string = slicedURL.slice(1, -6) ? slicedURL.slice(1, -6) : slicedURL.slice(1, -9) ? slicedURL.slice(1, -9) : slicedURL.slice(1);
+		let username: string = slicedURL.slice(1) ? slicedURL.slice(1) : slicedURL.slice(1, -6) ? slicedURL.slice(1, -6) : slicedURL.slice(1, -9);
+		// console.log(username.slice(-5))
+		console.log(username)
 		content = Users.filter((user: UserObject): boolean => user.firstName + "-" + user.lastName === username)
 			.map(({id, firstName, lastName, email, channel}: UserObject) => {
-				let videosList = Channels.map(({videosList, description}: ChannelObject) => videosList)[0];
+				let videosList: ChannelObject[] = Channels.map((value: ChannelObject) => value);
 
 			return <div key={id}>
 				<h1>{firstName + "-" + lastName}</h1>
 				<p>Kontakt: {email}</p>
-				{/*<p>{description}</p>*/}
+				<p>{videosList[0].description}</p>
 				<h4 onClick={() => handleChangeList(firstName + "-" + lastName, "videa")}>Videa</h4>
 				<h4 onClick={() => handleChangeList(firstName + "-" + lastName, "playlisty")}>Playlisty</h4>
 
-				{slicedURL.slice(-5) === "videa" ?
+				{username.slice(-5) === "videa" ?
 					Videos.filter((video: VideoObject) => {
-
 						for (let i: number = 0; i < videosList.length; i++) {
-							if (video.id === videosList[i]) {
+							if (video.id === videosList[i].id) {
 								return video.id;
 							}
 						}
