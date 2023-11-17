@@ -1,0 +1,28 @@
+#feed {
+  display: flex;
+  flex-direction: row;
+}
+
+#feed-sidebar {
+  height: 92vh;
+  padding-left: 2px;
+  padding-right: 2px;
+}
+
+//#selected-category {
+//  padding: 2px;
+//  overflow-y: auto;
+//  height: 90vh;
+//  flex: 2px;
+//}
+
+@media only screen and (max-width: 380px) {
+  #feed {
+	flex-direction: column;
+  }
+  #feed-sidebar {
+	height: auto;
+	padding-left: 0;
+	padding-right: 0;
+  }
+}

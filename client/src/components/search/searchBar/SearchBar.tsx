@@ -34,7 +34,7 @@ function SearchBar({ placeholder, videos }: {placeholder: string, videos: VideoO
 					{filteredVideos.slice(0, 15).map(({id, title}: VideoObject) => {
 						return (
 							<div key={id}>
-								<a className="dataItem" href={"/" + id} target="_self">
+								<a className="dataItem" href={"/video" + id} target="_self">
 								 	<p>{title}</p>
 								</a>
 							</div>

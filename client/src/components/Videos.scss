@@ -1,0 +1,14 @@
+#videos {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: start;
+  align-items: start;
+  gap: 2px;
+}
+
+@media only screen and (max-width: 380px) {
+  #videos {
+	flex-direction: column;
+  }
+}

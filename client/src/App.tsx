@@ -12,18 +12,18 @@ function App() {
 
     return (
 		<div className="App">
-			{/*<Header />*/}
+			<Header />
 			<BrowserRouter>
-				<Box sx={{ backgroundColor: '#000'}}>
-					<Navbar />
+				{/*<Box sx={{ backgroundColor: '#000'}}>*/}
+					{/*<Navbar />*/}
 					<Routes>
 						{/*<Route path={url} element={<Main url={url}/>}></Route>*/}
 						<Route path={"/"} element={<Feed />} />
-						<Route path={"/video/:id"}  element={<VideoDetail />} />
-						<Route path={"/channel/:id"}  element={<ChannelDetail />} />
-						<Route path={"/search/:searchTerm"}  element={<SearchFeed />} />
+						{/*<Route path={"/video/:id"}  element={<VideoDetail />} />*/}
+						{/*<Route path={"/channel/:id"}  element={<ChannelDetail />} />*/}
+						{/*<Route path={"/search/:searchTerm"}  element={<SearchFeed />} />*/}
 					</Routes>
-				</Box>
+				{/*</Box>*/}
 			</BrowserRouter>
 			<Footer />
 		</div>

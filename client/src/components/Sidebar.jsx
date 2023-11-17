@@ -1,23 +1,16 @@
-import {Stack} from "@mui/material";
 import {categories} from "../utils/constants";
+import "./Sidebar.scss";
 
 export const Sidebar = ({ selectedCategory, setSelectedCategory }) => (
-	<Stack
-		direction="row"
-		sx={{
-			overflowY: "auto",
-			height: { sx: "auto", md: "95%" },
-			flexDirection: { md: "column" },
-		}}
-	>
+	<div id={"sidebar"}>
 		{categories.map((category) => (
 			<button
 				className="category-btn"
 				onClick={() => setSelectedCategory(category.name)}
-				style={{
-					background: category.name === selectedCategory && "#FC1503",
-					color: "white",
-				}}
+				// style={{
+				// 	background: category.name === selectedCategory && "#FC1503",
+				// 	color: "white",
+				// }}
 				key={category.name}
 			>
 				<span style={{ color: category.name === selectedCategory ? "white" : "red", marginRight: "15px" }}>
@@ -28,5 +21,5 @@ export const Sidebar = ({ selectedCategory, setSelectedCategory }) => (
 				</span>
 			</button>
 		))}
-	</Stack>
+	</div>
 )
