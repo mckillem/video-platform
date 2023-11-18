@@ -1,0 +1,54 @@
+#video-detail {
+  min-height: 95vh;
+  #flex {
+	display: flex;
+	flex-direction: row;
+  }
+
+  #react-player {
+	width: 100%;
+	position: sticky;
+	top: 86px;
+  }
+  
+  #title {
+	color: #fff;
+	font-weight: bold;
+	padding: 2px;
+  }
+  
+  #channel {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	color: #fff;
+	padding: 1px 2px;
+  }
+
+  #channel-title {
+	color: #fff;
+  }
+
+  #statistics {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+  }
+
+  #videos {
+	padding: 1px 2px;
+	justify-content: center;
+	align-items: center;
+  }
+}
+
+@media only screen and (max-width: 380px) {
+  #flex {
+	flex-direction: column;
+  }
+
+  #videos {
+	padding-top: 5px;
+	padding-bottom: 5px;
+  }
+}

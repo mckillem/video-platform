@@ -1,0 +1,38 @@
+#channel-card {
+  box-shadow: none;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 320px;
+  height: 326px;
+  margin: auto;
+
+  #content {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+	color: orange;
+  }
+
+  #image {
+	border-radius: 50%;
+	height: 180px;
+	width: 180px;
+	margin-bottom: 2px;
+	border: 1px solid #e3e3e3;
+  }
+
+  #subscribers-count {
+	font-size: 15px;
+	font-weight: 500;
+	color: gray;
+  }
+}
+
+@media only screen and (max-width: 380px) {
+  #channel-card {
+	width: 356px;
+  }
+}

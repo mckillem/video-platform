@@ -1,0 +1,43 @@
+#video-card {
+  width: 320px;
+  box-shadow: none;
+  border-radius: 0;
+  
+  #image {
+    width: 358px;
+  }
+
+  #content {
+    background-color: #1e1e1e;
+    height: 106px;
+  }
+
+  #title {
+    font-weight: bold;
+    color: #fff;
+  }
+
+  #channel-title {
+    color: gray;
+  }
+
+  #published-at {
+    color: gray;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  #video-card {
+    width: 358px;
+  }
+}
+
+@media only screen and (max-width: 380px) {
+  #video-card {
+    width: 100%;
+  }
+
+  #image {
+    width: 100%;
+  }
+}

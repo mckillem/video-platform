@@ -1,7 +1,7 @@
 import { ChannelCard, Loader, VideoCard } from "./";
 import "./Videos.scss";
 
-export const Videos = ({ videos, direction }) => {
+export const Videos = ({ videos }) => {
 	if(!videos?.length) return <Loader />;
 
 	return (
