@@ -1,0 +1,17 @@
+#search-bar {
+  border-radius: 20px;
+  border: 1px solid #e3e3e3;
+  padding-left: 2px;
+  box-shadow: none;
+
+  #submit {
+	padding: 10px;
+	color: red;
+  }
+}
+
+@media only screen and (max-width: 380px) {
+  #search-bar {
+	margin-right: 5px
+  }
+}

@@ -1,0 +1,18 @@
+#search-feed {
+  padding: 2px;
+  min-height: 95vh;
+
+  #results {
+	font-weight: 900;
+	color: gray;
+	margin-bottom: 3px;
+
+	span {
+	  color: red;
+	}
+  }
+
+  #flex {
+	display: flex;
+  }
+}

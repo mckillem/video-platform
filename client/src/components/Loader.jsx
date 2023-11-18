@@ -1,9 +1,9 @@
-import { Box, CircularProgress, Stack } from '@mui/material';
+import "./Loader.scss";
 
 export const Loader = () =>  (
-	<Box minHeight="95vh">
-		<Stack direction='row' justifyContent='center' alignItems='center' height='80vh' >
-			<CircularProgress />
-		</Stack>
-	</Box>
+	<div id={"loader"}>
+		<div id={"flex"}>
+			Loading...
+		</div>
+	</div>
 );

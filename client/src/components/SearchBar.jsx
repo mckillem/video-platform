@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import { Paper, IconButton } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
+import "./SearchBar.scss";
 
 export const SearchBar = () => {
 	const [searchTerm, setSearchTerm] = useState('');
@@ -18,26 +18,16 @@ export const SearchBar = () => {
 	};
 
 	return (
-		<Paper
-			component='form'
-			onSubmit={handleSubmit}
-			sx={{
-				borderRadius: 20,
-				border: '1px solid #e3e3e3',
-				pl: 2,
-				boxShadow: 'none',
-				mr: { sm: 5 },
-			}}
-		>
+		<form id={"search-bar"} onSubmit={handleSubmit}>
 			<input
 				className='search-bar'
 				placeholder='Search...'
 				value={searchTerm}
 				onChange={(e) => setSearchTerm(e.target.value)}
 			/>
-			<IconButton type='submit' sx={{ p: '10px', color: 'red' }} aria-label='search'>
+			<button id={"submit"} type='submit' aria-label='search'>
 				<SearchIcon />
-			</IconButton>
-		</Paper>
+			</button>
+		</form>
 	);
 };
